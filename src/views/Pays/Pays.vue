@@ -1,18 +1,20 @@
 <script setup>
-const pays = [
-    'france', 'espagne', 'allemagne', 'luxembourg', 'belgique', 'portugal', 'maroc', 'grece', 'chine', 'japon'
-]
+import CardPays from '../Pays/CardPays.vue'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+
+let data = ref('')
+
+onMounted(async () => {
+  const response = await axios.get('https://restcountries.com/v3.1/all')
+  data.value = response.data
+})
 </script>
 
 <template>
     <h1>Liste des pays</h1>
     <div class="list-pays">
-        <div v-for="item in pays" class="pays">
-            <h4>{{ item }}</h4>
-            <Router-Link :to="'/fiche-pays/'+ item">
-                <a class="link-more">Fiche complémentaire</a>
-            </Router-Link>
-        </div>
+        <CardPays v-for="pays in data" :title="pays.name.common"></CardPays>
     </div>
 </template>
 
