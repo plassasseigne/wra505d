@@ -1,5 +1,6 @@
 <script setup>
   import Moyenne from '@/components/Moyenne.vue'
+  import Cover from '@/components/Cover.vue'
   import { ref } from 'vue'
 
   const symfony = 18
@@ -14,7 +15,7 @@
 </script>
 
 <template>
-    <h1>Home</h1>
+    <Cover :title="'Home'"></Cover>
 
     <main>
     <div class="notes">

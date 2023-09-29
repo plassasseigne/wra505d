@@ -20,7 +20,7 @@
         <p>Capitale du pays : {{ data.capital[0] }}</p>
         <div class="pays-flag">
             <p>Drapeau du pays : </p>
-            <img :src="data.flags.png" :alt="data.flags.alt">
+            <img v-if="data.cca2" :src="'/src/flags/' + data.cca2 + '.png'" :alt="data.flags.alt">
         </div>
         <div class="pays-languages">
             <p>Langues parlées : </p>
